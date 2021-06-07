@@ -3,11 +3,13 @@ import React from "react";
 import LeftSide from "./LeftSide";
 import MainSide from "./MainSide";
 import RightSide from "./RightSide";
+import { Redirect } from "react-router-dom";
+import { connect } from "react-redux";
 
-
-export default function Home(props) {
+function Home(props) {
   return (
     <Container>
+      {!props.user && <Redirect to="/"></Redirect>}
       <Section>
         <h5>
           <a>This is the placeholder to ad some ads title</a>
@@ -73,3 +75,11 @@ const Layout = styled.div`
     padding: 0 5px;
   }
 `;
+
+const mapStateToProps = (state) => {
+  return {
+    user: state.userState.user,
+  };
+};
+
+export default connect(mapStateToProps)(Home);

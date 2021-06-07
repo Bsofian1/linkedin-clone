@@ -17,3 +17,26 @@ export function signInAPI() {
       .catch((error) => console.log(error.message));
   };
 }
+
+export function getUserAuth() {
+  return (dispatch) => {
+    auth.onAuthStateChanged(async (user) => {
+      if (user) {
+        dispatch(setUser(user));
+      }
+    });
+  };
+}
+
+export function signOutAPI() {
+  return (dispatch) => {
+    auth
+      .signOut()
+      .then(() => {
+        dispatch(setUser(null));
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
+}

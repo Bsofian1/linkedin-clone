@@ -122,12 +122,13 @@ const Hero = styled.div`
     }
   }
   img {
-    /* z-index: -1; */
+    z-index: 0;
     width: 700px;
     height: 670px;
     position: absolute;
     bottom: -2px;
     right: 0px;
+
     @media (max-width: 768px) {
       top: 230px;
       width: initial;
@@ -156,7 +157,7 @@ const Google = styled.button`
   box-shadow: inset 0 0 0 1px rgb(0 0 0 / 60%), inset 0 0 0 2px rgb(0 0 0 / 0%),
     inset 0 0 0 1px rgb(0 0 0 /0);
   vertical-align: middle;
-  z-index: 0;
+  z-index: 10;
   transition-duration: 167ms;
   font-size: 20px;
   color: rgb(0 0 0 / 60%);
@@ -168,7 +169,7 @@ const Google = styled.button`
 
 const mapStateToProps = (state) => {
   return {
-      user: state.userState.user
+    user: state.userState.user,
   };
 };
 
